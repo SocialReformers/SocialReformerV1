@@ -1,0 +1,8 @@
+{
+  "name": "social-reformerv1",
+  "app_id": "983e0c46",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
