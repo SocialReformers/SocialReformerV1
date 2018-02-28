@@ -9,7 +9,11 @@
 
 <ion-content padding>
   <h3>Social Reformers</h3>
-
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <button ion-button (click)="register()" round icon-end center >Register</button>
+  <button ion-button (click)="signUp()" round navbar>SignUp</button><br/>
+  <a (click)="compaint()" class = "padding">
+    Raise Your Voice
+  </a><br/><br/><br/><br/>
+  <a (click)="createEvent()"  class = "padding" >Events And Volenteering
+  </a>
 </ion-content>
