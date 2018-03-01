@@ -1,8 +1,4 @@
-<!--
-  Generated template for the ComplaintsPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
 -->
 <ion-header>
 
@@ -15,9 +11,43 @@
 
 </ion-header>
 
-
-<ion-content padding>
+<ion-content>
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Example 1</h3>
+        </div>
+        <div class="panel-body">            
+            <auto-complete #lat2 (componentCallback)="autoCompleteCallback1($event)"></auto-complete>
+        </div>          
+        </div>
+      </div>
+    </div>
+  
+  
+<form #raiseComplaint='ngForm' (ngSubmit)="complaintForm(raiseComplaint)">    
     
-  <h3>Raise Your Voice!! Be a Reformer</h3>
-
-</ion-content>
+          <ion-item>
+              <ion-label>Complaint Type</ion-label>
+              <ion-select [(ngModel)]="complaintType" name="complaintType" >
+                <ion-option value="f">Bank</ion-option>
+                <ion-option value="m">Police</ion-option>
+              </ion-select>
+           </ion-item>
+           <ion-item>
+              <ion-label>Complaint Type</ion-label>
+              <ion-select [(ngModel)]="complaintType" name="complaintType">
+                <ion-option value="f">Bank</ion-option>
+                <ion-option value="m">Police</ion-option>
+              </ion-select>
+           </ion-item>             
+           <ion-item>
+              <ion-label>Complaint Details</ion-label>
+              <ion-textarea [(ngModel)]="compDetails" name="compDetails"></ion-textarea>
+           </ion-item>
+           <button ion-button type="submit" round>Get Contact No</button>
+           <button ion-button type="submit" round>Send E-mail</button>
+      </form>
+    
+    </ion-content>

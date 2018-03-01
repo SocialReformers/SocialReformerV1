@@ -15,6 +15,14 @@ import { ComplaintsPage } from '../pages/complaints/complaints'
 
 import { ComplaintsProvider } from '../providers/complaints/complaints';
 import { SignInPage } from '../pages/sign-in/sign-in';
+import { AutoCompleteProvider } from '../providers/auto-complete/auto-complete';
+import { LocalStorageService } from '../providers/storage/storage';
+import { BrowserGlobalRef,GlobalRef } from '../providers/window-ref/window-ref';
+import { AutoCompleteComponent } from '../components/auto-complete/auto-complete';
+import { HttpClientModule } from '@angular/common/http'; 
+import { HttpModule } from '@angular/http';
+import {Geolocation} from '@ionic-native/geolocation';
+import { ConnectionProvider } from '../providers/connection/connection';
 
 @NgModule({
   declarations: [
@@ -24,13 +32,15 @@ import { SignInPage } from '../pages/sign-in/sign-in';
     SignInPage,
     RegisterPage,
     ComplaintsPage,
-    ListPage
+    ListPage,AutoCompleteComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     CalendarModule,
+    HttpModule, HttpClientModule,
     IonicModule.forRoot(MyApp),
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -40,14 +50,19 @@ import { SignInPage } from '../pages/sign-in/sign-in';
     SignInPage,
     RegisterPage,
     ComplaintsPage,
-    ListPage
+    ListPage,AutoCompleteComponent
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     EventsProvider,
-    ComplaintsProvider
+    ComplaintsProvider,
+    AutoCompleteProvider,
+    LocalStorageService,
+    Geolocation,
+     HttpClientModule,{ provide: GlobalRef, useClass: BrowserGlobalRef },
+    ConnectionProvider, 
   ]
 })
 export class AppModule {}

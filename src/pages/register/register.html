@@ -7,6 +7,9 @@
 <ion-header>
 
   <ion-navbar>
+     <button ion-button menuToggle>
+       <ion-icon name="menu"></ion-icon>
+     </button>
     <ion-title>register</ion-title>
   </ion-navbar>
 
@@ -17,29 +20,29 @@
     <form (ngSubmit)="logForm()">
         <ion-item>
           <ion-label >Name Of Person</ion-label>
-          <ion-input type="text" name="name"></ion-input>
+          <ion-input type="text"  [(ngModel)]="name"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label >Email</ion-label>
-            <ion-input type="text" name="emailAddr"></ion-input>
+            <ion-input type="text" [(ngModel)]="emailAddr"></ion-input>
         </ion-item>
         <ion-item>          
             <ion-label >Phone No</ion-label>
-            <ion-input type="text" name="phoneNo"></ion-input>
+            <ion-input type="text" [(ngModel)]="phoneNo"></ion-input>
           </ion-item>
           
         <ion-item>
           <ion-label>Address</ion-label>
-          <ion-textarea name="eventVenue"></ion-textarea>
+          <ion-textarea [(ngModel)]="eventVenue"></ion-textarea>
         </ion-item>
             
         <ion-item>
             <ion-label>Password</ion-label>
-            <ion-input name="password"></ion-input>
+            <ion-input [(ngModel)]="password"></ion-input>
           </ion-item>
         <ion-item>
               <ion-label>Confirm Password</ion-label>
-              <ion-input name="confirmPassword"></ion-input>
+              <ion-input [(ngModel)]="confirmPassword"></ion-input>
         </ion-item>
         
         <button ion-button type="submit" block>Register</button>
