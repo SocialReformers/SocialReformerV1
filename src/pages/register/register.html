@@ -28,10 +28,10 @@
         <ion-item>
             <ion-label >Email</ion-label>
             <ion-input type="text" class="form-control" formControlName="emailAddr"></ion-input>
-           <div class="form-text error" *ngIf="registerForm.email">
+           <!-- <div class="form-text error" *ngIf="registerForm.email">
               <div *ngIf="registerForm.email.hasError('required')">Email is required.</div>
               <div *ngIf="registerForm.email.hasError('invalidEmail')">Email is invalid.</div>
-            </div>
+            </div> -->
           </ion-item>
           </div>
           <div class="formGroup">
@@ -48,7 +48,7 @@
         <div class="col-xs-12 col-md-6">
           
           <div class="panel-body">            
-              <auto-complete  (componentCallback)="autoCompleteCallback1($event)"></auto-complete>
+              <auto-complete #eventVenue (componentCallback)="autoCompleteCallback1($event)"></auto-complete>
           </div>          
           </div>
        
@@ -57,23 +57,23 @@
         <ion-item>
             <ion-label>Password</ion-label>
             <ion-input class="form-control" formControlName="password" type="password"></ion-input>
-             <div class='form-text error' *ngIf="registerForm.password">
+             <!-- <div class='form-text error' *ngIf="registerForm.password">
               <div *ngIf="registerForm.password.hasError('required')">Password is required.</div>
               <div *ngIf="registerForm.password.hasError('minlength')">Password isn't long enough.</div>
-            </div>    -->
+            </div>     -->
           </ion-item> 
           </div>
           <div class="formGroup">
         <ion-item>
               <ion-label>Confirm Password</ion-label>
               <ion-input class="form-control" formControlName="confirmPassword"type="password" ></ion-input>
-              <div class='form-text error' *ngIf="registerForm.password">
+              <!-- <div class='form-text error' *ngIf="registerForm.password">
                 <div *ngIf="registerForm.password.hasError('required')">Password is required.</div>
                 <div *ngIf="registerForm.password.hasError('minlength')">Password isn't long enough.</div>
-              </div>    
+              </div>     -->
         </ion-item>
         </div>
         
-        <button ion-button  type='submit' [disabled]='!registerForm.valid' block>Register</button>
+        <button ion-button  type='submit'  block>Register</button>
       </form> 
 </ion-content>

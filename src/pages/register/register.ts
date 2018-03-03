@@ -1,8 +1,11 @@
-import { Component,NgModule} from '@angular/core';
+import { Component,NgModule,ViewChild,ElementRef} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, FormControl,Validators } from '@angular/forms';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AutoCompleteProvider } from '../../providers/auto-complete/auto-complete';
+
+ 
+
 /**
  * Generated class for the RegisterPage page.
  *
@@ -16,7 +19,10 @@ import { AutoCompleteProvider } from '../../providers/auto-complete/auto-complet
   templateUrl: 'register.html',
 })
 export class RegisterPage {
+  @ViewChild('eventVenue') locality:any; 
+  eventVenue:any;
   public registerForm: FormGroup;
+
   public componentData1: any = '';
   constructor(public navCtrl: NavController, public navParams: NavParams,public geolocation:Geolocation,public autocomplete:AutoCompleteProvider,public formBuilder:FormBuilder) {
     this.autocomplete=autocomplete;
@@ -70,7 +76,7 @@ export class RegisterPage {
       return { invalidEmail: true };
     }}
   createEventForm(registerForm){
-    console.log(registerForm);
+    console.log(this.locality.locationInput);
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
