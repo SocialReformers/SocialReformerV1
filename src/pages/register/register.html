@@ -43,8 +43,15 @@
           <div class="formGroup">
         <ion-item>
           <ion-label>Address</ion-label>
-          <ion-textarea class="form-control" formControlName="eventVenue"></ion-textarea>
+          <!-- <ion-textarea class="form-control" formControlName="eventVenue"></ion-textarea> -->       
         </ion-item>
+        <div class="col-xs-12 col-md-6">
+          
+          <div class="panel-body">            
+              <auto-complete  (componentCallback)="autoCompleteCallback1($event)"></auto-complete>
+          </div>          
+          </div>
+       
             </div>
             <div class="formGroup">
         <ion-item>

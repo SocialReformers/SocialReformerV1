@@ -17,9 +17,10 @@ import { AutoCompleteProvider } from '../../providers/auto-complete/auto-complet
 })
 export class RegisterPage {
   public registerForm: FormGroup;
-  
+  public componentData1: any = '';
   constructor(public navCtrl: NavController, public navParams: NavParams,public geolocation:Geolocation,public autocomplete:AutoCompleteProvider,public formBuilder:FormBuilder) {
-  this.registerForm=formBuilder.group({
+    this.autocomplete=autocomplete;
+    this.registerForm=formBuilder.group({
      'namePerson':['',Validators.required],
      'emailAddr':['',Validators.compose([Validators.required,  this.emailValidator])],
      'phoneNo':['',Validators.required],
@@ -27,6 +28,27 @@ export class RegisterPage {
      'password':['',Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12), Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,12}$')])],
      'confirmPassword':['',Validators.required]
   },{validator: this.matchingPasswords('password', 'confirmPassword')});
+  }
+
+  public userSettings2: any = {
+    showRecentSearch: false,
+    geoCountryRestriction: ['in'],
+    searchIconUrl: 'http://downloadicons.net/sites/default/files/identification-search-magnifying-glass-icon-73159.png'
+  };
+
+  getCodeHtml(data: any): any {
+    let _temp: any = JSON.stringify(data);
+    _temp = _temp.split(',').join(',<br>');
+    _temp = _temp.split('{').join('{<br>');
+    _temp = _temp.split('}').join('<br>}');
+    return _temp;
+  }
+   autoCompleteCallback1(data: any): any {
+    this.componentData1 = JSON.stringify(data.data.geometry.location.lat);
+    //this.componentData1 = JSON.parse(this.componentData1).lat;
+    console.log(JSON.parse(this.componentData1));
+   
+      //console.log(JSON.stringify(this.componentData1.lng));
   }
   matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
     // TODO maybe use this https://github.com/yuyang041060120/ng2-validation#notequalto-1
@@ -41,6 +63,7 @@ export class RegisterPage {
       }
     }
   }
+
   emailValidator(control: FormControl): {[key: string]: any} {
     var emailRegexp = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
     if (control.value && !emailRegexp.test(control.value)) {
