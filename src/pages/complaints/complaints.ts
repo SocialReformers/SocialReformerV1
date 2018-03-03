@@ -67,7 +67,8 @@ export class ComplaintsPage {
     console.info("Selected:",selectedValue);
     
   }
-  complaintForm(formData) {
+  complaintForm(formData,comp) {
+       
     if(formData.valid) {
       console.log(formData.value);
      // this.subData = formData.value;

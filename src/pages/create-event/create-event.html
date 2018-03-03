@@ -15,36 +15,45 @@
 
 </ion-header>
 <ion-content padding>
-    <form (ngSubmit)="logForm()">
+    <form [formGroup]="form" (ngSubmit)="createEventForm(form.value)">
         <ion-item>
           <ion-label >Name Of Person</ion-label>
-          <ion-input type="text" name="name"></ion-input>
+          <ion-input type="text" formControlName="nameOfPerson"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label >Event Title</ion-label>
-            <ion-input type="text" name="eventTitle"></ion-input>
+            <ion-input type="text" formControlName="eventTitle"></ion-input>
         </ion-item>
         <ion-item>          
             <ion-label >Event Date</ion-label>
-            <ion-input type="text" name="eventDate"></ion-input>
+            <ion-input type="text" formControlName="eventDate"></ion-input>
           </ion-item>
           
         <ion-item>
           <ion-label>Event Venue</ion-label>
-          <ion-textarea name="eventVenue"></ion-textarea>
+          <!-- <ion-textarea formControlName="eventVenue"></ion-textarea> -->
+         
+          <div class="col-xs-12 col-md-6">
+            <div class="panel-body">            
+                <auto-complete  (componentCallback)="autoCompleteCallback1($event)"></auto-complete>
+            </div>          
+            </div>
+              
+             
+            
         </ion-item>
             
         <ion-item>
             <ion-label>Event Details</ion-label>
-            <ion-textarea name="details"></ion-textarea>
+            <ion-textarea formControlName="details"></ion-textarea>
           </ion-item>
         <ion-item>
               <ion-label>Email Address</ion-label>
-              <ion-input name="emailAddress"></ion-input>
+              <ion-input formControlName="emailAddress"></ion-input>
         </ion-item>
         <ion-item>
               <ion-label>Contact No</ion-label>
-              <ion-input name="contactNo"></ion-input>
+              <ion-input formControlName="contactNo"></ion-input>
         </ion-item>
         <button ion-button type="submit" block>Add Todo</button>
       </form>    

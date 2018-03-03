@@ -17,34 +17,56 @@
 
 
 <ion-content padding>
-    <form (ngSubmit)="logForm()">
-        <ion-item>
+    <form  [formGroup]="registerForm" (ngSubmit)="createEventForm(registerForm.value)" novalidate>
+      <div class="formGroup">
+      <ion-item>
           <ion-label >Name Of Person</ion-label>
-          <ion-input type="text"  [(ngModel)]="name"></ion-input>
+          <ion-input type="text" class="form-control" formControlName="namePerson" ></ion-input>
         </ion-item>
+        </div>
+        <div class="formGroup">
         <ion-item>
             <ion-label >Email</ion-label>
-            <ion-input type="text" [(ngModel)]="emailAddr"></ion-input>
-        </ion-item>
+            <ion-input type="text" class="form-control" formControlName="emailAddr"></ion-input>
+           <div class="form-text error" *ngIf="registerForm.email">
+              <div *ngIf="registerForm.email.hasError('required')">Email is required.</div>
+              <div *ngIf="registerForm.email.hasError('invalidEmail')">Email is invalid.</div>
+            </div>
+          </ion-item>
+          </div>
+          <div class="formGroup">
         <ion-item>          
             <ion-label >Phone No</ion-label>
-            <ion-input type="text" [(ngModel)]="phoneNo"></ion-input>
+            <ion-input type="text" class="form-control" formControlName="phoneNo" ></ion-input>
           </ion-item>
-          
+          </div>
+          <div class="formGroup">
         <ion-item>
           <ion-label>Address</ion-label>
-          <ion-textarea [(ngModel)]="eventVenue"></ion-textarea>
+          <ion-textarea class="form-control" formControlName="eventVenue"></ion-textarea>
         </ion-item>
-            
+            </div>
+            <div class="formGroup">
         <ion-item>
             <ion-label>Password</ion-label>
-            <ion-input [(ngModel)]="password"></ion-input>
-          </ion-item>
+            <ion-input class="form-control" formControlName="password" type="password"></ion-input>
+             <div class='form-text error' *ngIf="registerForm.password">
+              <div *ngIf="registerForm.password.hasError('required')">Password is required.</div>
+              <div *ngIf="registerForm.password.hasError('minlength')">Password isn't long enough.</div>
+            </div>    -->
+          </ion-item> 
+          </div>
+          <div class="formGroup">
         <ion-item>
               <ion-label>Confirm Password</ion-label>
-              <ion-input [(ngModel)]="confirmPassword"></ion-input>
+              <ion-input class="form-control" formControlName="confirmPassword"type="password" ></ion-input>
+              <div class='form-text error' *ngIf="registerForm.password">
+                <div *ngIf="registerForm.password.hasError('required')">Password is required.</div>
+                <div *ngIf="registerForm.password.hasError('minlength')">Password isn't long enough.</div>
+              </div>    
         </ion-item>
+        </div>
         
-        <button ion-button type="submit" block>Register</button>
+        <button ion-button  type='submit' [disabled]='!registerForm.valid' block>Register</button>
       </form> 
 </ion-content>
