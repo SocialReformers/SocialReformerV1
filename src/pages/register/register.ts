@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, FormControl,Validators } from '@angular/forms';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AutoCompleteProvider } from '../../providers/auto-complete/auto-complete';
-
+import {RegisterProvider} from '../../providers/register/register'
  
 
 /**
@@ -21,10 +21,12 @@ import { AutoCompleteProvider } from '../../providers/auto-complete/auto-complet
 export class RegisterPage {
   @ViewChild('eventVenue') locality:any; 
   eventVenue:any;
+  registerProvider:RegisterProvider;
   public registerForm: FormGroup;
 
   public componentData1: any = '';
-  constructor(public navCtrl: NavController, public navParams: NavParams,public geolocation:Geolocation,public autocomplete:AutoCompleteProvider,public formBuilder:FormBuilder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public geolocation:Geolocation,public autocomplete:AutoCompleteProvider,
+    public formBuilder:FormBuilder,register:RegisterProvider) {
     this.autocomplete=autocomplete;
     this.registerForm=formBuilder.group({
      'namePerson':['',Validators.required],
@@ -34,6 +36,7 @@ export class RegisterPage {
      'password':['',Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12), Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,12}$')])],
      'confirmPassword':['',Validators.required]
   },{validator: this.matchingPasswords('password', 'confirmPassword')});
+  this.registerProvider=register;
   }
 
   public userSettings2: any = {
@@ -77,6 +80,7 @@ export class RegisterPage {
     }}
   createEventForm(registerForm){
     console.log(this.locality.locationInput);
+    this.registerProvider.addUser(registerForm);
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
