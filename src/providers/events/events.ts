@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
-import {Http} from '@angular/http';
+import {ConnectionProvider} from '../../providers/connection/connection';
+import { Console } from '@angular/core/src/console'; 
 //import 'rxjs/Observable'
 //import { Observable } from 'rxjs/Observable';
 
@@ -13,10 +14,37 @@ import {Http} from '@angular/http';
 @Injectable()
 export class EventsProvider {
 
-  constructor(public http: Http) {
-  
+  constructor(public http: Http,public connectionProvider:ConnectionProvider) {
+  this.connectionProvider=connectionProvider;
+  }
+ getEventList(data){
+   return new Promise((resolve,reject)=>{
+     console.log(this.connectionProvider.getUrl()+JSON.stringify(data));
+     this.http.post(this.connectionProvider.getUrl()
+     +'',JSON.stringify(data),this.connectionProvider.addHeader()).
+     subscribe(res=>{resolve(res);
+    },err=>{
+      reject(err);
+    })
+   })
+ }
+
+  addEvents(data){
+     return new Promise((resolve, reject) => {
+    console.log(this.connectionProvider.getUrl()+ JSON.stringify(data));
+
+       this.http.post(this.connectionProvider.getUrl()
+     +'/socialReformer/events', JSON.stringify(data),this.connectionProvider.addHeader())
+         .subscribe(res => {
+          alert("sucess");
+           resolve(res);
+         }, (err) => {
+           reject(err);
+         });
+     });
+   } 
+
   }
 
 
 
-}

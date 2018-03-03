@@ -25,6 +25,8 @@ export class RegisterPage {
   public registerForm: FormGroup;
 
   public componentData1: any = '';
+  public eventVenueAuto:any='';
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public geolocation:Geolocation,public autocomplete:AutoCompleteProvider,
     public formBuilder:FormBuilder,register:RegisterProvider) {
     this.autocomplete=autocomplete;
@@ -53,7 +55,7 @@ export class RegisterPage {
     return _temp;
   }
    autoCompleteCallback1(data: any): any {
-    this.componentData1 = JSON.stringify(data.data.geometry.location.lat);
+    this.componentData1 = JSON.stringify(data.data);
     //this.componentData1 = JSON.parse(this.componentData1).lat;
     console.log(JSON.parse(this.componentData1));
    
@@ -78,8 +80,11 @@ export class RegisterPage {
     if (control.value && !emailRegexp.test(control.value)) {
       return { invalidEmail: true };
     }}
-  createEventForm(registerForm){
+    registrationForm(registerForm){
     console.log(this.locality.locationInput);
+    this.eventVenueAuto=this.locality;
+    // console.log(this.eventVenueAuto);
+    // console.log(this.registerForm.setValue(this.eventVenueAuto));
     this.registerProvider.addUser(registerForm);
   }
   ionViewDidLoad() {

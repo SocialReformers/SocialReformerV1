@@ -17,7 +17,7 @@
 
 
 <ion-content padding>
-    <form  [formGroup]="registerForm" (ngSubmit)="createEventForm(registerForm.value)" novalidate>
+    <form  [formGroup]="registerForm" (ngSubmit)="registrationForm(registerForm.value)" novalidate>
       <div class="formGroup">
       <ion-item>
           <ion-label >Name Of Person</ion-label>
@@ -49,6 +49,7 @@
           
           <div class="panel-body">            
               <auto-complete #eventVenue (componentCallback)="autoCompleteCallback1($event)"></auto-complete>
+              <!-- <ion-input type="text" id="eventVenueAuto" formControlName="eventVenueAuto"></ion-input> -->
           </div>          
           </div>
        

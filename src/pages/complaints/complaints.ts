@@ -3,6 +3,7 @@ import { Component,ViewChild,ElementRef } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AutoCompleteProvider } from '../../providers/auto-complete/auto-complete';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
+import {ComplaintsProvider} from '../../providers/complaints/complaints';
 
 /**
  * Generated class for the ComplaintsPage page.
@@ -19,9 +20,10 @@ import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 export class ComplaintsPage {
   private raiseComplaint : FormGroup;
   nav: NavController;
-  constructor(navCtrl : NavController,public geolocation:Geolocation,public autocomplete:AutoCompleteProvider) {
+  constructor(navCtrl : NavController,public geolocation:Geolocation,public autocomplete:AutoCompleteProvider,public complaintProvider:ComplaintsProvider) {
       this.nav=navCtrl;
       this.autocomplete=autocomplete;
+      this.complaintProvider=complaintProvider;
       
   }
   public componentData1: any = '';
@@ -71,7 +73,13 @@ export class ComplaintsPage {
        
     if(formData.valid) {
       console.log(formData.value);
+       this.complaintProvider.raiseComplaint(formData);
      // this.subData = formData.value;
     }
   }
+  
+  getNGOList(formData,comp){
+    this.complaintProvider.getNgoDetails(formData);
+  }
+
 }

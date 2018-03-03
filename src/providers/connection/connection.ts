@@ -23,7 +23,7 @@ export class ConnectionProvider {
       const url = this.eventUrl+'/api/events';
     
       
-      return this.http.get(url,options)
+      return this.http.get(url,this.addHeader())
         .toPromise()
         .then(response => {console.log(response); response.json() as EventInfo[];
        console.log(JSON.stringify(response)) })

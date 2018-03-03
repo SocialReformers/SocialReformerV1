@@ -45,7 +45,7 @@ export class CreateEventPage {
     return _temp;
   }
    autoCompleteCallback1(data: any): any {
-    this.componentData1 = JSON.stringify(data.data.geometry.location.lat);
+    this.componentData1 = JSON.stringify(data.data);
     //this.componentData1 = JSON.parse(this.componentData1).lat;
     console.log(JSON.parse(this.componentData1));
    

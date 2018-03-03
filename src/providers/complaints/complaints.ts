@@ -1,5 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import {ConnectionProvider} from '../../providers/connection/connection';
+import { Console } from '@angular/core/src/console';
 
 /*
   Generated class for the ComplaintsProvider provider.
@@ -10,8 +12,33 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ComplaintsProvider {
 
-  constructor(public http: HttpClient) {
-    console.log('Hello ComplaintsProvider Provider');
+  constructor(public http: Http,public connectionProvider:ConnectionProvider) {
+    this.connectionProvider=connectionProvider;
   }
+ raiseComplaint(data){
+   return new Promise((resolve,reject)=>{
+     console.log(this.connectionProvider.getUrl()+JSON.stringify(data));
+       this.http.post(this.connectionProvider.getUrl()
+      +'/socialReformer/ngo', JSON.stringify(data),this.connectionProvider.addHeader())
+          .subscribe(res => {
+            resolve(res);
+          }, (err) => {
+            reject(err);
+          });
+      });
+  
+ }
 
+ getNgoDetails(data){
+  return new Promise((resolve,reject)=>{
+    console.log(this.connectionProvider.getUrl()+JSON.stringify(data));
+      this.http.post(this.connectionProvider.getUrl()
+     +'/socialReformer/ngo', JSON.stringify(data),this.connectionProvider.addHeader())
+         .subscribe(res => {
+           resolve(res);
+         }, (err) => {
+           reject(err);
+         });
+     });
+ }
 }
