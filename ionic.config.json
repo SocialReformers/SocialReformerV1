@@ -1,7 +1,11 @@
 {
   "name": "social-reformerv1",
   "app_id": "983e0c46",
-  "type": "ionic-angular",
+  "type": "ionic-angular",  
+  "proxies": [{
+    "path": "/api",
+    "proxyUrl": "http://some.url.com/path/api"
+  }],
   "integrations": {
     "cordova": {}
   }
