@@ -12,7 +12,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { EventsProvider } from '../providers/events/events';
 import { RegisterPage } from '../pages/register/register'
 import { ComplaintsPage } from '../pages/complaints/complaints'
-
+import { SocialSharing } from '@ionic-native/social-sharing';
+import {MyAccountPage} from '../pages/my-account/my-account';
+import {SignOutPage} from '../pages/sign-out/sign-out';
+import {EventRoutPage} from '../pages/event-rout/event-rout';
 import { ComplaintsProvider } from '../providers/complaints/complaints';
 import { SignInPage } from '../pages/sign-in/sign-in';
 import { AutoCompleteProvider } from '../providers/auto-complete/auto-complete';
@@ -24,6 +27,7 @@ import { HttpModule } from '@angular/http';
 import {Geolocation} from '@ionic-native/geolocation';
 import { ConnectionProvider } from '../providers/connection/connection';
 import { RegisterProvider } from '../providers/register/register';
+import { SignInProvider } from '../providers/sign-in/sign-in';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,7 @@ import { RegisterProvider } from '../providers/register/register';
     SignInPage,
     RegisterPage,
     ComplaintsPage,
-    ListPage,AutoCompleteComponent
+    ListPage,AutoCompleteComponent,SignOutPage,MyAccountPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,8 @@ import { RegisterProvider } from '../providers/register/register';
     SignInPage,
     RegisterPage,
     ComplaintsPage,
-    ListPage,AutoCompleteComponent
+    ListPage,AutoCompleteComponent,
+    SignOutPage,MyAccountPage
   ],
   providers: [
     StatusBar,
@@ -61,10 +66,11 @@ import { RegisterProvider } from '../providers/register/register';
     ComplaintsProvider,
     AutoCompleteProvider,
     LocalStorageService,
-    Geolocation,
+    Geolocation,SocialSharing,
      HttpClientModule,{ provide: GlobalRef, useClass: BrowserGlobalRef },
     ConnectionProvider,
-    RegisterProvider, 
+    RegisterProvider,
+    SignInProvider, 
   ]
 })
 export class AppModule {}

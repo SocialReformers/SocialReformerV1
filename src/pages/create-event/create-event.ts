@@ -16,46 +16,8 @@ import { AutoCompleteProvider } from '../../providers/auto-complete/auto-complet
   templateUrl: 'create-event.html',
 })
 export class CreateEventPage {
-  nav: NavController;
-   public componentData1: any = '';
-  public form: FormGroup;
-  constructor(public navCtrl: NavController, public geolocation:Geolocation,public autocomplete:AutoCompleteProvider,private fb: FormBuilder) {
-    this.autocomplete=autocomplete;
-    this.form=fb.group({
-     'nameOfPerson':['',Validators.required],
-     'eventTitle':['',Validators.required],
-     'eventDate':['',Validators.required],
-    //  'eventVenue':['',Validators.required],
-     'details':['',Validators.required],
-     'emailAddress':['',Validators.required],
-     'contactNo':['',Validators.required]
-   });
- 
-  }
-  public userSettings2: any = {
-    showRecentSearch: false,
-    geoCountryRestriction: ['in'],
-    searchIconUrl: 'http://downloadicons.net/sites/default/files/identification-search-magnifying-glass-icon-73159.png'
-  };
-  getCodeHtml(data: any): any {
-    let _temp: any = JSON.stringify(data);
-    _temp = _temp.split(',').join(',<br>');
-    _temp = _temp.split('{').join('{<br>');
-    _temp = _temp.split('}').join('<br>}');
-    return _temp;
-  }
-   autoCompleteCallback1(data: any): any {
-    this.componentData1 = JSON.stringify(data.data);
-    //this.componentData1 = JSON.parse(this.componentData1).lat;
-    console.log(JSON.parse(this.componentData1));
-   
-      //console.log(JSON.stringify(this.componentData1.lng));
-  }
-  createEventForm(form){
-    console.log(form);
-  }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CreateEventPage');
-  }
 
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad createEvent');
+  }
 }
