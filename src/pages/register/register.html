@@ -21,23 +21,23 @@
       <div class="formGroup">
       <ion-item>
           <ion-label >Name Of Person</ion-label>
-          <ion-input type="text" class="form-control" formControlName="namePerson" ></ion-input>
+          <ion-input type="text" class="form-control" formControlName="namePerson" required ></ion-input>
         </ion-item>
         </div>
         <div class="formGroup">
         <ion-item>
             <ion-label >Email</ion-label>
-            <ion-input type="text" class="form-control" formControlName="emailAddr"></ion-input>
-           <!-- <div class="form-text error" *ngIf="registerForm.email">
-              <div *ngIf="registerForm.email.hasError('required')">Email is required.</div>
-              <div *ngIf="registerForm.email.hasError('invalidEmail')">Email is invalid.</div>
-            </div> -->
-          </ion-item>
+            <ion-input type="text" class="form-control" formControlName="emailAddr" required></ion-input>
+            <div *ngIf="registerForm.get('emailAddr').touched">
+              <div  *ngIf="registerForm.get('emailAddr').hasError('required')">Email is required.</div>
+              <div  *ngIf="registerForm.get('emailAddr').hasError('invalidEmail')">Email is invalid.</div>
+            </div> 
+          </ion-item> 
           </div>
           <div class="formGroup">
         <ion-item>          
             <ion-label >Phone No</ion-label>
-            <ion-input type="text" class="form-control" formControlName="phoneNo" ></ion-input>
+            <ion-input type="text" class="form-control" formControlName="phoneNo" required></ion-input>
           </ion-item>
           </div>
           <div class="formGroup">
@@ -48,7 +48,7 @@
         <div class="col-xs-12 col-md-6">
           
           <div class="panel-body">            
-              <auto-complete #eventVenue (componentCallback)="autoCompleteCallback1($event)"></auto-complete>
+              <auto-complete #eventVenue (componentCallback)="autoCompleteCallback1($event)" required></auto-complete>
               <!-- <ion-input type="text" id="eventVenueAuto" formControlName="eventVenueAuto"></ion-input> -->
           </div>          
           </div>
@@ -57,21 +57,21 @@
             <div class="formGroup">
         <ion-item>
             <ion-label>Password</ion-label>
-            <ion-input class="form-control" formControlName="password" type="password"></ion-input>
-             <!-- <div class='form-text error' *ngIf="registerForm.password">
-              <div *ngIf="registerForm.password.hasError('required')">Password is required.</div>
-              <div *ngIf="registerForm.password.hasError('minlength')">Password isn't long enough.</div>
-            </div>     -->
+            <ion-input class="form-control ng-valid ng-dirty ng-invalid" formControlName="password" type="password"required></ion-input>
+             <div class='form-text error' *ngIf="registerForm.controls.password.touched">
+              <div  class="error-message" *ngIf="registerForm.controls.password.hasError()">Password is required.</div>
+              <div  class="error-message" *ngIf="registerForm.controls.password.hasError('mismatch')">Password isn't long enough.</div>
+            </div>    
           </ion-item> 
           </div>
           <div class="formGroup">
         <ion-item>
               <ion-label>Confirm Password</ion-label>
-              <ion-input class="form-control" formControlName="confirmPassword"type="password" ></ion-input>
-              <!-- <div class='form-text error' *ngIf="registerForm.password">
-                <div *ngIf="registerForm.password.hasError('required')">Password is required.</div>
-                <div *ngIf="registerForm.password.hasError('minlength')">Password isn't long enough.</div>
-              </div>     -->
+              <ion-input class="form-control  ng-valid ng-dirty ng-invalid" formControlName="confirmPassword" type="password" required></ion-input>
+              <div class='form-text error' *ngIf="registerForm.controls.confirmPassword.touched">{{registerForm.get('confirmPassword').hasError('required')}
+                <div  class="error-message" *ngIf="registerForm.controls.confirmPassword.hasError('')">Password is required.</div>
+                <div  class="error-message" *ngIf="registerForm.controls.confirmPassword.hasError('minlength')">Password isn't long enough.</div>
+              </div>    
         </ion-item>
         </div>
         

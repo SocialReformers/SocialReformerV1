@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { SocialSharing } from '@ionic-native/social-sharing';
+//import { SocialSharing } from '@ionic-native/social-sharing';
 import {Http, RequestOptions ,ResponseType,Headers,RequestMethod} from '@angular/http';
 import {FormControl,FormBuilder,FormGroup,FormsModule, Validators} from '@angular/forms';
 import {SignInProvider}  from '../../providers/sign-in/sign-in';
 import {MyAccountPage} from '../../pages/my-account/my-account';
+import { RegisterPage } from '../register/register';
 /**
  * Generated class for the SignInPage page.
  *
@@ -34,10 +35,16 @@ export class SignInPage {
 loginForm(loginF){
 console.log(loginF);
 if(this.loginF.valid) {
+  console.log(loginF);
+  if(this.signinProvider.validateUser(loginF)){
+  
   window.localStorage.setItem('username', loginF.username);
   window.localStorage.setItem('password', loginF.password);
 
   this.navCtrl.push(MyAccountPage);
+  }else{
+    this.navCtrl.push(RegisterPage);
+  }
 }
 
 }
