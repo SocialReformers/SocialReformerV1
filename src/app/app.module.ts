@@ -24,6 +24,7 @@ import { HttpModule } from '@angular/http';
 import {Geolocation} from '@ionic-native/geolocation';
 import { ConnectionProvider } from '../providers/connection/connection';
 import { RegisterProvider } from '../providers/register/register';
+import { SignInProvider } from '../providers/sign-in/sign-in';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { RegisterProvider } from '../providers/register/register';
     Geolocation,
      HttpClientModule,{ provide: GlobalRef, useClass: BrowserGlobalRef },
     ConnectionProvider,
-    RegisterProvider, 
+    RegisterProvider,
+    SignInProvider, 
   ]
 })
 export class AppModule {}

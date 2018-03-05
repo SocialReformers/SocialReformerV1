@@ -17,16 +17,19 @@
 
 
 <ion-content padding>
-    <!-- <form [formGroup]="loginF" (ngSubmit)="loginForm(loginF.value)">
+    <form [formGroup]="loginF" (ngSubmit)="loginForm(loginF.value)" validate>
+        <div class="formGroup">            
         <ion-item>
           <ion-label >UserId</ion-label>
-          <ion-input type="text" formControlName="userId"></ion-input>
+          <ion-input class="form-control" type="text" formControlName="emailAddr"></ion-input>
         </ion-item>
+        </div>
+        <div class="formGroup">            
         <ion-item>
             <ion-label >Password</ion-label>
-            <ion-input type="text" formControlName="password"></ion-input>
+            <ion-input class="form-control" type="password" formControlName="password"></ion-input>
         </ion-item>
-              <!-- </form>  -->
-
-              <button  type="submit" (click)="send('apgandhamwar@gmail.com','Testing','Test')">Sign In</button>
+         </div>   
+       <button ion-button  type='submit'  block>Sign In</button>
+            </form> 
             </ion-content>

@@ -17,7 +17,7 @@
 
 
 <ion-content padding>
-    <form  [formGroup]="registerForm" (ngSubmit)="registrationForm(registerForm.value)" novalidate>
+    <form  [formGroup]="registerForm" (ngSubmit)="createEventForm(registerForm.value)" novalidate>
       <div class="formGroup">
       <ion-item>
           <ion-label >Name Of Person</ion-label>
@@ -49,7 +49,6 @@
           
           <div class="panel-body">            
               <auto-complete #eventVenue (componentCallback)="autoCompleteCallback1($event)"></auto-complete>
-              <!-- <ion-input type="text" id="eventVenueAuto" formControlName="eventVenueAuto"></ion-input> -->
           </div>          
           </div>
        
@@ -67,7 +66,7 @@
           <div class="formGroup">
         <ion-item>
               <ion-label>Confirm Password</ion-label>
-              <ion-input class="form-control" formControlName="confirmPassword"type="password" ></ion-input>
+              <ion-input class="form-control" formControlName="confirmPassword" type="password" ></ion-input>
               <!-- <div class='form-text error' *ngIf="registerForm.password">
                 <div *ngIf="registerForm.password.hasError('required')">Password is required.</div>
                 <div *ngIf="registerForm.password.hasError('minlength')">Password isn't long enough.</div>
