@@ -6,6 +6,9 @@ import {FormControl,FormBuilder,FormGroup,FormsModule, Validators} from '@angula
 import {SignInProvider}  from '../../providers/sign-in/sign-in';
 import {MyAccountPage} from '../../pages/my-account/my-account';
 import { RegisterPage } from '../register/register';
+import { Storage } from '@ionic/storage';
+import { window } from 'rxjs/operators/window';
+
 /**
  * Generated class for the SignInPage page.
  *
@@ -21,9 +24,11 @@ import { RegisterPage } from '../register/register';
 export class SignInPage {
   http: Http;
   loginF:FormGroup;
+  
 
-  constructor(http: Http,public navCtrl: NavController, public navParams: NavParams,public formBuilder:FormBuilder,public signinProvider:SignInProvider) {
+  constructor(http: Http,public navCtrl: NavController, public navParams: NavParams,public storage:Storage,public formBuilder:FormBuilder,public signinProvider:SignInProvider) {
       this.http = http;
+      this.storage=storage;
       this.formBuilder=formBuilder;
       this.signinProvider=signinProvider;
       this.loginF=formBuilder.group({
@@ -38,8 +43,7 @@ if(this.loginF.valid) {
   console.log(loginF);
   if(this.signinProvider.validateUser(loginF)){
   
-  window.localStorage.setItem('username', loginF.username);
-  window.localStorage.setItem('password', loginF.password);
+  this.storage.set('username', loginF.username);
 
   this.navCtrl.push(MyAccountPage);
   }else{

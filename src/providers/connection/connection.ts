@@ -47,7 +47,7 @@ export class ConnectionProvider {
             });
         });
       } 
-      
+          
 public addHeader():RequestOptions {
       let headers:Headers = new Headers();
       headers.append('Access-Control-Allow-Origin' , '*');
@@ -57,4 +57,5 @@ public addHeader():RequestOptions {
        let options = new RequestOptions({headers:headers});
        return options;
 }
+
 }

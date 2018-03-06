@@ -7,6 +7,8 @@ import {RegisterProvider} from '../../providers/register/register'
 import { AbstractClassPart } from '@angular/compiler/src/output/output_ast';
 import {EmailValidator} from '../../validators/email';
 import {PasswordValidator} from '../../validators/password';
+import {MyAccountPage} from '../../pages/my-account/my-account';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the RegisterPage page.
@@ -32,9 +34,10 @@ export class RegisterPage {
   password: AbstractControl;
   confirmPassword: AbstractControl;
   namePerson:AbstractControl;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public geolocation:Geolocation,public autocomplete:AutoCompleteProvider,
+  constructor(public navCtrl: NavController, public navParams: NavParams,public storage:Storage,public geolocation:Geolocation,public autocomplete:AutoCompleteProvider,
     public formBuilder:FormBuilder,register:RegisterProvider) {
     this.autocomplete=autocomplete;
+    this.storage=storage;
     this.registerForm=formBuilder.group({
      'namePerson':['',Validators.required],
      'emailAddr':['',Validators.compose([Validators.required, Validators.minLength(3),Validators.required, Validators.maxLength(25), EmailValidator.checkEmail])],
@@ -74,13 +77,17 @@ console.log("Testing"+this.emailAddr.valid);
   }
   
     registrationForm(registerForm){
-      if (this.registerForm.valid) {
+      // if (this.registerForm.valid) {
         console.log(this.locality.locationInput);
         this.eventVenueAuto=this.locality;
         // console.log(this.eventVenueAuto);
         // console.log(this.registerForm.setValue(this.eventVenueAuto));
-        this.registerProvider.addUser(registerForm);
-      }
+        this.registerProvider.addUser(registerForm).then(
+          result=>{
+            this.storage.set('username', registerForm.emailAddr);
+            this.navCtrl.push(MyAccountPage);
+          }
+          ).catch(err=>"Service Error");
     
   }
   ionViewDidLoad() {

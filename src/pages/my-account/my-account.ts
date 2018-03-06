@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import{Storage} from '@ionic/storage';
 /**
  * Generated class for the MyAccountPage page.
  *
@@ -15,7 +15,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MyAccountPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public storage:Storage) {
+    this.storage=storage;
+  }
+  signOut(){
+   // this.storage.clear();
   }
 
   ionViewDidLoad() {

@@ -29,6 +29,7 @@ import {Geolocation} from '@ionic-native/geolocation';
 import { ConnectionProvider } from '../providers/connection/connection';
 import { RegisterProvider } from '../providers/register/register';
 import { SignInProvider } from '../providers/sign-in/sign-in';
+import { IonicStorageModule } from '@ionic/storage';
 // import { SignInProvider } from '../providers/sign-in/sign-in';
 
 @NgModule({
@@ -47,7 +48,7 @@ import { SignInProvider } from '../providers/sign-in/sign-in';
     CalendarModule,
     HttpModule, HttpClientModule,
     IonicModule.forRoot(MyApp),
-    
+    IonicStorageModule.forRoot() 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -68,7 +69,7 @@ import { SignInProvider } from '../providers/sign-in/sign-in';
     ComplaintsProvider,
     AutoCompleteProvider,
     LocalStorageService,
-    Geolocation,SignInProvider,
+    Geolocation,Storage,
     // SocialSharing,
      HttpClientModule,{ provide: GlobalRef, useClass: BrowserGlobalRef },
     ConnectionProvider,
