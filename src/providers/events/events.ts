@@ -17,11 +17,11 @@ export class EventsProvider {
   constructor(public http: Http,public connectionProvider:ConnectionProvider) {
   this.connectionProvider=connectionProvider;
   }
- getEventList(data){
+ getEventList(){
    return new Promise((resolve,reject)=>{
-     console.log(this.connectionProvider.getUrl()+JSON.stringify(data));
-     this.http.post(this.connectionProvider.getUrl()
-     +'',JSON.stringify(data),this.connectionProvider.addHeader()).
+     console.log(this.connectionProvider.getUrl());
+     this.http.get(this.connectionProvider.getUrl()
+     +'/socialReformer/events/nearYou',this.connectionProvider.addHeader()).
      subscribe(res=>{resolve(res);
     },err=>{
       reject(err);
