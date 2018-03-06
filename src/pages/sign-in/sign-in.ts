@@ -43,7 +43,7 @@ if(this.loginF.valid) {
   console.log(loginF);
   if(this.signinProvider.validateUser(loginF)){
   
-  this.storage.set('username', loginF.username);
+  this.storage.set('username', loginF.emailAddr);
 
   this.navCtrl.push(MyAccountPage);
   }else{

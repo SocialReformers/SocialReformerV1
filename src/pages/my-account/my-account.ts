@@ -17,6 +17,7 @@ export class MyAccountPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public storage:Storage) {
     this.storage=storage;
+    console.log("Testing Storage"+storage.get('username'));
   }
   signOut(){
    // this.storage.clear();
