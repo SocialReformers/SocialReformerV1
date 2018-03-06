@@ -36,17 +36,12 @@ export class ListPage {
 
   
  getEventsList(){
-//   const subscription = this.geoloaction.watchPosition()
-//   .filter((p) => p.coords !== undefined) //Filter Out Errors
-//   .subscribe(position => {
-// console.log(position.coords.longitude + ' ' + position.coords.latitude);
-// });
-
-//    console.log(subscription+"Test");
+  console.log("hi");
    this.eventsProvider.getEventList().
    then((result:any)=>{
-   // this.resultq=JSON.parse(result);
-    console.log(result);
+    var object=JSON.parse(JSON.stringify(result));
+    this.resultq=this.convertObjectToString(object);
+    console.log(this.resultq);
     // if (!result) {      
     //   this.eventlist.emit({'response': false, 'reason': 'Failed to get geo location'});
     // }else {
@@ -54,5 +49,21 @@ export class ListPage {
     // }
    })
  }
+  convertObjectToString(data) {
+  Object.keys(data).forEach(function (key) {
+      if (data[key] && typeof data[key] === 'object') {
+          Object.keys(data[key]).forEach(function (key1) {
+              data[key][key1] = String(data[key][key1]);
+          });
+      } else if (data[key] && typeof data[key] === 'string' || typeof data[key] === 'number') {
+          data[key] = String(data[key]);
+      } else {
+          data[key] = "";
+      }
+
+  });
+  return data;
+}
+
 
 }

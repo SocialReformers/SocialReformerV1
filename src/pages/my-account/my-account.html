@@ -6,23 +6,23 @@
 -->
 
 <ion-header>
-    <ion-navbar>
-      <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title>Home</ion-title>
-    </ion-navbar>
-  </ion-header>
-      
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+    
 <ion-content padding>
-    <h3>Social Reformers</h3>
-<!-- {{storage.get('username')}} -->
-    <button ion-button (click)="signOut()" round navbar>SignOut</button><br/>
-    <a (click)="compaint()" class = "padding">
-       Raise Your Voice
-    </a><br/><br/><br/><br/>
-    <a (click)="createEvent()"  class = "padding" >Events And Volenteering
+  <h3>Social Reformers</h3>
+  {{username}}
+  <button ion-button (click)="signOut()" round navbar>SignOut</button><br/>
+  <a (click)="compaint()" class = "padding">
+    Raise Your Voice
+  </a><br/><br/><br/><br/>
+  <a (click)="createEvent()"  class = "padding" >Events And Volenteering
+  </a>
+  <a (click)="eventList()"  class = "padding" >Events List
     </a>
-    <a (click)="eventList()"  class = "padding" >Events List
-      </a>
 </ion-content>
