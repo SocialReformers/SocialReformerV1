@@ -8,6 +8,7 @@ import {MyAccountPage} from '../../pages/my-account/my-account';
 import { RegisterPage } from '../register/register';
 import { Storage } from '@ionic/storage';
 import { window } from 'rxjs/operators/window';
+import {LocalStorageService} from '../../providers/storage/storage';
 
 /**
  * Generated class for the SignInPage page.
@@ -30,7 +31,7 @@ export class SignInPage {
       this.http = http;
       this.storage=storage;
       this.formBuilder=formBuilder;
-      this.signinProvider=signinProvider;
+      this.signinProvider=signinProvider;  
       this.loginF=formBuilder.group({
         'emailAddr':['',Validators.required],
         'password':['',Validators.required]
@@ -42,16 +43,34 @@ console.log(loginF);
 if(this.loginF.valid) {
   console.log(loginF);
   if(this.signinProvider.validateUser(loginF)){
-  
-  this.storage.set('username', loginF.emailAddr);
-
-  this.navCtrl.push(MyAccountPage);
+  console.log(loginF.username+"user name");
+  localStorage.setItem("username",loginF.emailAddr);
+  this.navCtrl.push(MyAccountPage).then(
+      response => {
+        console.log('Response ' + response);
+      },
+      error => {
+        console.log('Error: ' + error);
+      }
+    ).catch(exception => {
+      console.log('Exception ' + exception);
+    }); 
   }else{
-    this.navCtrl.push(RegisterPage);
+    this.navCtrl.push(RegisterPage).then(
+      response => {
+        console.log('Response ' + response);
+      },
+      error => {
+        console.log('Error: ' + error);
+      }
+    ).catch(exception => {
+      console.log('Exception ' + exception);
+    });;
+  };
   }
 }
 
-}
+
 
   
   // constructor(public navCtrl: NavController, public navParams: NavParams, private socialSharing: SocialSharing) {

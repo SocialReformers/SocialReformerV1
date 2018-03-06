@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, ViewController  } from 'ionic-angular';
 import{Storage} from '@ionic/storage';
+import { LocalStorageService } from '../../providers/storage/storage';
 /**
  * Generated class for the MyAccountPage page.
  *
@@ -11,20 +12,21 @@ import{Storage} from '@ionic/storage';
 @IonicPage()
 @Component({
   selector: 'page-my-account',
-  templateUrl: 'my-account.html',
+  templateUrl: 'my-account.html'
 })
 export class MyAccountPage {
+   username:String;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public storage:Storage) {
-    this.storage=storage;
-    console.log("Testing Storage"+storage.get('username'));
+  constructor( public viewCtrl: ViewController) {   
+ 
+//this.viewCtrl.getNavParams()
+ 
   }
   signOut(){
    // this.storage.clear();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MyAccountPage');
+    this.username=localStorage.getItem("username");
   }
-
 }
