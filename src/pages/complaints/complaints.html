@@ -30,9 +30,8 @@
     
           <ion-item>
               <ion-label>Complaint Type</ion-label>
-              <ion-select [(ngModel)]="complaintType" name="complaintType" >
-                <ion-option value="f">Bank</ion-option>
-                <ion-option value="m">Police</ion-option>
+              <ion-select [(ngModel)]="complaintType" name="complaintType" >              
+                <ion-option *ngFor="let cause of causeList"></ion-option>
               </ion-select>
            </ion-item>
            <ion-item>
