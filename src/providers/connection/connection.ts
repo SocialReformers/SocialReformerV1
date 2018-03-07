@@ -14,7 +14,9 @@ import { Header } from 'ionic-angular/components/toolbar/toolbar-header';
 @Injectable()
 export class ConnectionProvider {
 
+
  public eventUrl='http://127.0.0.1:8080';
+
   
     constructor(public http: Http) {
     

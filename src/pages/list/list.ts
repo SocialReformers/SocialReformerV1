@@ -43,8 +43,24 @@ export class ListPage {
 
   
  getEventsList(){
-   
+
  }
+  convertObjectToString(data) {
+  Object.keys(data).forEach(function (key) {
+      if (data[key] && typeof data[key] === 'object') {
+          Object.keys(data[key]).forEach(function (key1) {
+              data[key][key1] = String(data[key][key1]);
+          });
+      } else if (data[key] && typeof data[key] === 'string' || typeof data[key] === 'number') {
+          data[key] = String(data[key]);
+      } else {
+          data[key] = "";
+      }
+
+  });
+  return data;
+}
+
 
 
 
