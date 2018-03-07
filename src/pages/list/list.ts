@@ -13,7 +13,7 @@ export class ListPage {
   //icons: string[];
   // items: Array<{title: string, note: string, icon: string}>;
   @Output()
-  eventlist: EventEmitter<any> = new EventEmitter<any>();
+  eventlist:any;
     constructor(public navCtrl: NavController, public navParams: NavParams,public connectionProvider:ConnectionProvider,public eventsProvider:EventsProvider ) {
     // If we navigated to this page, we will have an item available as a nav param
     //this.selectedItem = navParams.get('item');
@@ -32,22 +32,18 @@ export class ListPage {
     //     icon: this.icons[Math.floor(Math.random() * this.icons.length)]
     //   });
     // }
+    this.eventsProvider.getEventList().
+    then((result:any)=>{
+    var object=JSON.stringify(result.json() );
+    console.log(object+"Tesing");
+    this.eventlist=JSON.parse(JSON.stringify(result.json())); 
+    })
+    console.log(this.eventlist);
   }
 
   
  getEventsList(){
-  console.log("hi");
-   this.eventsProvider.getEventList().
-   then((result:any)=>{
-    var object=JSON.parse(JSON.stringify(result));
-    this.resultq=this.convertObjectToString(object);
-    console.log(this.resultq);
-    // if (!result) {      
-    //   this.eventlist.emit({'response': false, 'reason': 'Failed to get geo location'});
-    // }else {
-     
-    // }
-   })
+
  }
   convertObjectToString(data) {
   Object.keys(data).forEach(function (key) {
@@ -64,6 +60,8 @@ export class ListPage {
   });
   return data;
 }
+
+
 
 
 }
