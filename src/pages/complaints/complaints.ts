@@ -1,9 +1,10 @@
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Component,ViewChild,ElementRef } from '@angular/core';
+import { Component,ViewChild,ElementRef,Output } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AutoCompleteProvider } from '../../providers/auto-complete/auto-complete';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import {ComplaintsProvider} from '../../providers/complaints/complaints';
+
 
 /**
  * Generated class for the ComplaintsPage page.
@@ -20,6 +21,8 @@ import {ComplaintsProvider} from '../../providers/complaints/complaints';
 export class ComplaintsPage {
   private raiseComplaint : FormGroup;
   nav: NavController;
+  @Output()
+  causeList:any;
   constructor(navCtrl : NavController,public geolocation:Geolocation,public autocomplete:AutoCompleteProvider,public complaintProvider:ComplaintsProvider) {
       this.nav=navCtrl;
       this.autocomplete=autocomplete;
@@ -48,7 +51,7 @@ export class ComplaintsPage {
     this.componentData1 = JSON.stringify(data.data.geometry.location.lat);
     //this.componentData1 = JSON.parse(this.componentData1).lat;
     console.log(JSON.parse(this.componentData1));
-   
+    this.retrieveCause();
       //console.log(JSON.stringify(this.componentData1.lng));
   }
   autoCompleteCallback2(data: any): any {
@@ -82,4 +85,10 @@ export class ComplaintsPage {
     this.complaintProvider.getNgoDetails(formData);
   }
 
+  retrieveCause(){
+    this.complaintProvider.retrieveCause().then((res =>{  
+      this.causeList=JSON.parse(JSON.stringify(res));
+      console.log(this.causeList)
+    })).catch();
+  }
 }

@@ -15,6 +15,18 @@ export class ComplaintsProvider {
   constructor(public http: Http,public connectionProvider:ConnectionProvider) {
     this.connectionProvider=connectionProvider;
   }
+  retrieveCause(){
+    return new Promise((resolve,reject)=>{
+      
+        this.http.get(this.connectionProvider.getUrl()
+       +'/socialReformer/complaint/cause',this.connectionProvider.addHeader())
+           .subscribe(res => {
+             resolve(res.json());          
+           }, (err) => {
+             reject(err);
+           });
+       });
+    }
  raiseComplaint(data){
    return new Promise((resolve,reject)=>{
      console.log(this.connectionProvider.getUrl()+JSON.stringify(data));
