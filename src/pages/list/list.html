@@ -8,16 +8,39 @@
 </ion-header>
 
 <ion-content>
-  
-    <button ion-item type="submit" block (click)="getEventsList()">
-      <!-- <ion-icon [name]="item.icon" item-start></ion-icon> -->
-      <!-- {{item.title}} -->
-      <!-- <div class="item-note" item-end>
-        {{item.note}}
-      </div> -->
-    </button>
 
-  <!-- <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div> -->
+  <ion-list>
+    <ion-item>
+        <ion-row>
+            <ion-col width-33>
+              <p>Name of Event</p>
+            </ion-col>
+            <ion-col width-33>
+              <p>Event Details</p>
+            </ion-col>
+            <ion-col width-33>
+              <p>Event Date</p>
+            </ion-col>
+            <ion-col width-33>
+              <p>Event City</p>
+            </ion-col>
+          </ion-row>
+    </ion-item>
+    <ion-item *ngFor="let item of eventlist">
+      <ion-row>
+        <ion-col width-33>
+          <p>{{item.name}}</p>
+        </ion-col>
+        <ion-col width-33>
+          <p>{{item.description}}</p>
+        </ion-col>
+        <ion-col width-33>
+          <p>{{item.eventDate}}</p>
+        </ion-col>
+        <ion-col width-33>
+          <p>{{item.city}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
 </ion-content>
