@@ -31,7 +31,7 @@ export class ComplaintsProvider {
    return new Promise((resolve,reject)=>{
      console.log(this.connectionProvider.getUrl()+JSON.stringify(data));
        this.http.post(this.connectionProvider.getUrl()
-      +'/socialReformer/ngo', JSON.stringify(data),this.connectionProvider.addHeader())
+      +'/socialReformer/complaint/complaint', JSON.stringify(data),this.connectionProvider.addHeader())
           .subscribe(res => {
             resolve(res);
           }, (err) => {
@@ -41,13 +41,12 @@ export class ComplaintsProvider {
   
  }
 
- getNgoDetails(data){
+ getNgoDetails(data,city){
   return new Promise((resolve,reject)=>{
-    console.log(this.connectionProvider.getUrl()+JSON.stringify(data));
-      this.http.post(this.connectionProvider.getUrl()
-     +'/socialReformer/ngo', JSON.stringify(data),this.connectionProvider.addHeader())
+      this.http.get(this.connectionProvider.getUrl()
+     +'/socialReformer/complaint/ngo'+"?cause="+data+"&city="+city,this.connectionProvider.addHeader())
          .subscribe(res => {
-           resolve(res);
+           resolve(res.json());
          }, (err) => {
            reject(err);
          });
