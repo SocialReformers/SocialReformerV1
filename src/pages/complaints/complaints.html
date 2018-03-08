@@ -1,5 +1,4 @@
 
--->
 <ion-header>
 
     <ion-navbar>
@@ -26,25 +25,30 @@
     </div>
   
   
-<form #raiseComplaint='ngForm' (ngSubmit)="complaintForm(raiseComplaint,componentData1)">    
-    
+    <form  [formGroup]="raiseComplaint" (ngSubmit)="complaintForm(raiseComplaint.value)"> 
+      <div class="formGroup">
           <ion-item>
               <ion-label>Complaint Type</ion-label>
-              <ion-select [(ngModel)]="complaintType" name="complaintType" >              
-                <ion-option *ngFor="let cause of causeList"></ion-option>
+              <ion-select  formControlName="causeType" (ionChange)="onSelectChangeRetrieveNGO($event)">              
+                <ion-option *ngFor="let cause of causeList" [value] = "cause" >{{cause.type}}</ion-option>
               </ion-select>
            </ion-item>
+        </div>
+        <div class="formGroup">
            <ion-item>
-              <ion-label>Complaint Type</ion-label>
-              <ion-select [(ngModel)]="complaintType" name="complaintType">
-                <ion-option value="f">Bank</ion-option>
-                <ion-option value="m">Police</ion-option>
+              <ion-label>NGO List</ion-label>              
+                <ion-select  formControlName="ngo" (ionChange)="onSelectNGO($event)">              
+                  <ion-option *ngFor="let ngo of ngoList" [value] = "ngo" >{{ngo.name}}</ion-option>
+               
               </ion-select>
-           </ion-item>             
+           </ion-item>   
+           </div>  
+           <div class="formGroup">      
            <ion-item>
               <ion-label>Complaint Details</ion-label>
-              <ion-textarea [(ngModel)]="compDetails" name="compDetails"></ion-textarea>
+              <ion-textarea formControlName="compDetails" name="compDetails"></ion-textarea>
            </ion-item>
+          </div>  
            <button ion-button type="submit" round>Get Contact No</button>
            <button ion-button type="submit" round>Send E-mail</button>
       </form>
