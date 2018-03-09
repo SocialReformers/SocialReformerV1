@@ -5,7 +5,11 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { AutoCompleteProvider } from '../../providers/auto-complete/auto-complete';
 import {EventsProvider} from '../../providers/events/events';
 import {ListPage} from '../../pages/list/list';
+
 import {RegisterProvider} from '../../providers/register/register'
+
+import { HomePage } from '../home/home';
+
 /**
  * Generated class for the CreateEventPage page.
  *
@@ -137,6 +141,7 @@ export class EventRoutPage {
       }
     }}
 
+
     retrieveUserId(email:any){
       this.registerProvider.retrieveUserId(email).then(res=>{
         console.log(res);
@@ -144,5 +149,10 @@ export class EventRoutPage {
       }).catch(err=>{
         
       })
+
+    signOut(){
+      localStorage.clear();
+      this.navCtrl.push(HomePage);
+
     }
 }

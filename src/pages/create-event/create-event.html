@@ -16,23 +16,28 @@
 </ion-header>    
 
 <ion-content padding>
+<div *ngIf="username!=null">
     <ion-item>
-     <!-- {{username}}        -->
+     {{username}}  
       </ion-item>
 <ion-item>
   <button ion-button (click)="signOut()" round nav>Sign Out</button>
 </ion-item>
+
 <ion-item>
 <br/>
-<a (click)="createEvent()"  class = "padding" >Events And Volenteering
-  </a>
+<button ion-button (click)="createEvent()"  class = "padding" >Create Event</button>
 </ion-item>
 <ion-item>
-  <a (click)="eventList()"  class = "padding" >Events List
-    </a>
+  <button ion-button (click)="eventList()"  class = "padding" round nav>Events List</button>
   </ion-item>
+</div>
 <ion-item>
-    Not A registered User. Please register and go to createEvent.
+    You are not A registered User. <br/>
+    Please register and go to createEvent.
+  </ion-item>
+  <ion-item>
+      <button ion-button (click)="register()"  class = "padding"round nav>Register</button>
   </ion-item>
 </ion-content>
 

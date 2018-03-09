@@ -25,8 +25,25 @@
     </div>
   
   
-    <form  [formGroup]="raiseComplaint" (ngSubmit)="complaintForm(raiseComplaint.value)" > 
-      
+
+
+    <form  [formGroup]="raiseComplaint" (ngSubmit)="complaintForm(raiseComplaint.value)"> 
+        <div *ngIf="username!=null">
+            <ion-item>
+             {{username}}  
+              </ion-item>
+        <ion-item>
+          <button ion-button (click)="signOut()" round nav>Sign Out</button>
+        </ion-item>
+        </div>
+      <div class="formGroup">
+          <div class="panel-body">            
+              <auto-complete  (componentCallback)="autoCompleteCallback1($event)"></auto-complete>
+          </div> 
+      </div>
+      <div class="formGroup">
+
+
           <ion-item>
               <ion-label>Complaint Type</ion-label>
               <ion-select  formControlName="causeType"  (ionChange)="onSelectChangeRetrieveNGO($event)">

@@ -20,7 +20,7 @@ export class EventsProvider {
  getEventList(){
    return new Promise((resolve,reject)=>{
      console.log(this.connectionProvider.getUrl());
-     this.http.post(this.connectionProvider.getUrl()
+     this.http.get(this.connectionProvider.getUrl()
      +'/socialReformer/events/nearYou',this.connectionProvider.addHeader()).
      subscribe(res=>{
        resolve(res);

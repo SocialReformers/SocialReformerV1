@@ -21,7 +21,7 @@ export class HomePage {
    signUp(){
     this.navCtrl.setRoot(SignInPage);
    }
-   complaint(){
+   complaint(){     
     this.navCtrl.setRoot(ComplaintsPage);
    }
    createEvent(){
