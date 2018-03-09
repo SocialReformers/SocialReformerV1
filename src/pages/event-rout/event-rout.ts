@@ -5,6 +5,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { AutoCompleteProvider } from '../../providers/auto-complete/auto-complete';
 import {EventsProvider} from '../../providers/events/events';
 import {ListPage} from '../../pages/list/list';
+import {RegisterProvider} from '../../providers/register/register'
 /**
  * Generated class for the CreateEventPage page.
  *
@@ -35,7 +36,7 @@ export class EventRoutPage {
    public country:any;
   public form: FormGroup;
   public createEventDetails:any={
-    eventTitle:"",
+    name:"",
     eventDate:"",
     description:"",
     details:0,
@@ -44,15 +45,16 @@ export class EventRoutPage {
     city:"",
     state:"",
     locality:"",
-    created_by:"", 
+    createdby:"", 
   }
-  constructor(public navCtrl: NavController, public geolocation:Geolocation,public eventProvide:EventsProvider,public autocomplete:AutoCompleteProvider,private fb: FormBuilder) {
+  constructor(public navCtrl: NavController, public geolocation:Geolocation,public eventProvide:EventsProvider,
+    public autocomplete:AutoCompleteProvider,private fb: FormBuilder,public registerProvider:RegisterProvider) {
     this.autocomplete=autocomplete;
     //this.nav=navCtrl;
+    this.registerProvider=registerProvider;
     this.eventProvide=eventProvide;
     console.log(this.componentData1.value);
-    this.form=fb.group({
-    
+    this.form=fb.group({    
      'eventTitle':['',Validators.required],
      'eventDate':['',Validators.required],
      'description':['',Validators.required],
@@ -84,13 +86,13 @@ export class EventRoutPage {
       //console.log(JSON.stringify(this.componentData1.lng));
   }
   createEventForm(form){
-    this.createEventDetails.eventTitle=this.form.controls['eventTitle'].value;
+    this.createEventDetails.name=this.form.controls['eventTitle'].value;
     this.createEventDetails.description=this.form.controls['description'].value;
     this.createEventDetails.eventDate=this.form.controls['eventDate'].value;
     this.createEventDetails.locality=this.componentData2;
-    this.createEventDetails.city=this.city;
-    this.createEventDetails.state=this.state;
-    this.createEventDetails.country=this.country;
+    this.createEventDetails.city=this.city.long_name;
+    this.createEventDetails.state=this.state.long_name;
+    this.createEventDetails.country=this.country.long_name;
     this.createEventDetails.details=this.form.controls['details'].value;
     this.createEventDetails.contactNo=this.form.controls['contactNo'].value;
     
@@ -104,6 +106,8 @@ export class EventRoutPage {
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad EventRoutPage');
+    this.retrieveUserId(localStorage.getItem("username"));   
+    
   }
   retrieveCity(addressDetails:any){
    
@@ -132,4 +136,13 @@ export class EventRoutPage {
           }
       }
     }}
+
+    retrieveUserId(email:any){
+      this.registerProvider.retrieveUserId(email).then(res=>{
+        console.log(res);
+        this.createEventDetails.createdby=res;
+      }).catch(err=>{
+        
+      })
+    }
 }
