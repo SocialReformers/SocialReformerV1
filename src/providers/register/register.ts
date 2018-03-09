@@ -32,4 +32,17 @@ export class RegisterProvider {
       });
     } 
 
+
+    retrieveUserId(data:String){
+        return new Promise((resolve, reject) => {        
+           this.http.get(this.connectionProvider.getUrl()
+         +'/socialReformer/register/getUsrId?email='+data,this.connectionProvider.addHeader())
+             .subscribe(res => {
+               resolve(res.json());
+             }, (err) => {
+               reject(err);
+             });
+         });
+    }
+
 }
