@@ -20,9 +20,10 @@ export class EventsProvider {
  getEventList(){
    return new Promise((resolve,reject)=>{
      console.log(this.connectionProvider.getUrl());
-     this.http.get(this.connectionProvider.getUrl()
+     this.http.post(this.connectionProvider.getUrl()
      +'/socialReformer/events/nearYou',this.connectionProvider.addHeader()).
-     subscribe(res=>{resolve(res);
+     subscribe(res=>{
+       resolve(res);
     },err=>{
       reject(err);
     })
@@ -34,7 +35,7 @@ export class EventsProvider {
     console.log(this.connectionProvider.getUrl()+ JSON.stringify(data));
 
        this.http.post(this.connectionProvider.getUrl()
-     +'/socialReformer/events', JSON.stringify(data),this.connectionProvider.addHeader())
+     +'/socialReformer/events/createEvent/events', JSON.stringify(data),this.connectionProvider.addHeader())
          .subscribe(res => {
           alert("sucess");
            resolve(res);

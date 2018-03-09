@@ -83,35 +83,16 @@ export class ComplaintsPage {
       //console.log(JSON.stringify(this.componentData1.lng));
   }
   
-  autoCompleteCallback2(data: any): any {
-   
-    this.componentData2 = JSON.stringify(data);
     
-    console.log( this.componentData2);
-    console.log(data);
-  }
-  autoCompleteCallback3(data: any): any {
-    
-     this.componentData3 = JSON.stringify(data);
- 
-     console.log( this.componentData3);
-     console.log(data);
-   }
-  onChange(selectedValue){
-    console.info("Selected:",selectedValue);
-    
-  }
-
-  
   complaintForm(raiseComplaint) {
+
        
        if(this.raiseComplaint.valid){
        this.complaintDetails.description=raiseComplaint.compDetails;
        this.complaintProvider.raiseComplaint(this.complaintDetails).then(res=>{return res;}
       ).catch();
     }
-     // this.subData = formData.value;
-    // }
+
   }
   
   getNGOList(causeType:String){
