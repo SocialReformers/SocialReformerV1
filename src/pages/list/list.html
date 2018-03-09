@@ -10,8 +10,8 @@
 <ion-content>
 
   <ion-list class="col-xs-12 col-md-6">
-    <ion-item color="secondary" no-padding>
-        <ion-row  col-sm-4>
+    <ion-item color="secondary">
+        <ion-row>
             <ion-col width-33>
               <p>Name of Event</p>
             </ion-col>
@@ -26,10 +26,10 @@
             </ion-col>
           </ion-row>
     </ion-item>
-    <ion-item *ngFor="let item of eventlist" color="#f4f4f4" >
-      <ion-row col-sm-4>
+    <ion-item *ngFor="let item of eventlist" color="#f4f4f4"  >
+      <ion-row id="{{item.id}}" (click)="getEventDetails(itemid)">
         <ion-col width-33>
-          <ion-item > <p>{{item.name}}</p></ion-item>
+          <p>{{item.name}}</p>
         </ion-col>
         <ion-col width-33>
           <p>{{item.description}}</p>

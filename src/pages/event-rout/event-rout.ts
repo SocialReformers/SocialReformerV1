@@ -148,7 +148,8 @@ export class EventRoutPage {
         this.createEventDetails.createdby=res;
       }).catch(err=>{
         
-      })
+      });
+    }
 
     signOut(){
       localStorage.clear();

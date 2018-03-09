@@ -29,7 +29,18 @@ export class EventsProvider {
     })
    })
  }
-
+ getEventDetails(eventId){
+  return new Promise((resolve,reject)=>{
+    console.log(this.connectionProvider.getUrl());
+    this.http.post(this.connectionProvider.getUrl()
+    +'/socialReformer/events /eventDetails ?eventId'+eventId,this.connectionProvider.addHeader()).
+    subscribe(res=>{
+      resolve(res);
+   },err=>{
+     reject(err);
+   })
+  })
+}
   addEvents(data){
      return new Promise((resolve, reject) => {
     console.log(this.connectionProvider.getUrl()+ JSON.stringify(data));
