@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {RegisterPage} from '../../pages/register/register';
 import {CreateEventPage} from '../../pages/create-event/create-event';
 import {ComplaintsPage} from '../../pages/complaints/complaints';
 import {SignInPage} from '../../pages/sign-in/sign-in';
+import {RegisterPage} from '../../pages/register/register';
+
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+ 
   constructor(public navCtrl: NavController) {
 
   }
@@ -20,7 +21,7 @@ export class HomePage {
    signUp(){
     this.navCtrl.setRoot(SignInPage);
    }
-   compaint(){
+   complaint(){
     this.navCtrl.setRoot(ComplaintsPage);
    }
    createEvent(){
