@@ -6,13 +6,13 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { CreateEventPage } from '../pages/create-event/create-event';
-import { CalendarModule } from 'ionic2-calendar2';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { EventsProvider } from '../providers/events/events';
 import { RegisterPage } from '../pages/register/register'
 import { ComplaintsPage } from '../pages/complaints/complaints'
-//import { SocialSharing } from '@ionic-native/social-sharing';
+import { SocialSharing } from '@ionic-native/social-sharing';
+
 
 import {MyAccountPage} from '../pages/my-account/my-account';
 import {SignOutPage} from '../pages/sign-out/sign-out';
@@ -40,12 +40,12 @@ import { IonicStorageModule } from '@ionic/storage';
     SignInPage,
     RegisterPage,
     ComplaintsPage,
+    EventRoutPage,
     ListPage,AutoCompleteComponent,SignOutPage,MyAccountPage
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    CalendarModule,
     HttpModule, HttpClientModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot() 
@@ -57,7 +57,7 @@ import { IonicStorageModule } from '@ionic/storage';
     CreateEventPage,
     SignInPage,
     RegisterPage,
-    ComplaintsPage,
+    ComplaintsPage,EventRoutPage,
     ListPage,AutoCompleteComponent,
     SignOutPage,MyAccountPage
   ],
@@ -70,7 +70,7 @@ import { IonicStorageModule } from '@ionic/storage';
     AutoCompleteProvider,
     LocalStorageService,
     Geolocation,Storage,
-    // SocialSharing,
+    SocialSharing,
      HttpClientModule,{ provide: GlobalRef, useClass: BrowserGlobalRef },
     ConnectionProvider,
     RegisterProvider,

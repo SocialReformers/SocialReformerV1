@@ -23,7 +23,7 @@ export class MyAccountPage {
  
   }
   signOut(){
-   // this.storage.clear();
+   localStorage.clear();
   }
 
   ionViewDidLoad() {

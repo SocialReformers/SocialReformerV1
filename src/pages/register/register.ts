@@ -79,9 +79,7 @@ console.log("Testing"+this.emailAddr.valid);
     registrationForm(registerForm){
       // if (this.registerForm.valid) {
         console.log(this.locality.locationInput);
-        this.eventVenueAuto=this.locality;
-        // console.log(this.eventVenueAuto);
-        // console.log(this.registerForm.setValue(this.eventVenueAuto));
+        
         this.registerProvider.addUser(registerForm).then(
           result=>{
             this.storage.set('username', registerForm.emailAddr);
