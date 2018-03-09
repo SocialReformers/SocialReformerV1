@@ -5,6 +5,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { AutoCompleteProvider } from '../../providers/auto-complete/auto-complete';
 import {EventsProvider} from '../../providers/events/events';
 import {ListPage} from '../../pages/list/list';
+import { HomePage } from '../home/home';
 /**
  * Generated class for the CreateEventPage page.
  *
@@ -132,4 +133,8 @@ export class EventRoutPage {
           }
       }
     }}
+    signOut(){
+      localStorage.clear();
+      this.navCtrl.push(HomePage);
+    }
 }

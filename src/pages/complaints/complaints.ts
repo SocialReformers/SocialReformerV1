@@ -5,6 +5,7 @@ import { AutoCompleteProvider } from '../../providers/auto-complete/auto-complet
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import {ComplaintsProvider} from '../../providers/complaints/complaints';
 import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
+import { HomePage } from '../home/home';
 
 
 /**
@@ -61,8 +62,6 @@ export class ComplaintsPage {
     description:"",  
     locality:"",
     type:""
-  
-  
   }
   getCodeHtml(data: any): any {
     let _temp: any = JSON.stringify(data);
@@ -137,5 +136,8 @@ clearNGoDetails(){
   this.complaintDetails.email="";
   this.complaintDetails.socialId="";
 }
-
+signOut(){
+  localStorage.clear();
+  this.nav.push(HomePage);
+}
 }

@@ -5,6 +5,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { AutoCompleteProvider } from '../../providers/auto-complete/auto-complete';
 import {ListPage} from '../list/list';
 import {EventRoutPage} from '../../pages/event-rout/event-rout';
+import { RegisterPage } from '../register/register';
 /**
  * Generated class for the CreateEventPage page.
  *
@@ -32,7 +33,9 @@ export class CreateEventPage {
   eventList(){
     this.nav.push(ListPage);
   }
-
+  register(){
+    this.nav.push(RegisterPage);
+  }
   createEvent(){
   this.nav.push(EventRoutPage);
 }

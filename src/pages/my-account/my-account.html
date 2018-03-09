@@ -14,15 +14,17 @@
   </ion-navbar>
 </ion-header>
     
-<ion-content padding>
+<ion-content padding >
   <h3>Social Reformers</h3>
   {{username}}
+  <ion-list ng-if="username!=null">
   <button ion-button (click)="signOut()" round navbar>SignOut</button><br/>
   <a (click)="compaint()" class = "padding">
     Raise Your Voice
   </a><br/><br/><br/><br/>
-  <a (click)="createEvent()"  class = "padding" >Events And Volenteering
+  <a (click)="createEvent()"  class = "padding" >Create Events
   </a>
   <a (click)="eventList()"  class = "padding" >Events List
     </a>
+  </ion-list>
 </ion-content>
