@@ -33,7 +33,7 @@ export class ComplaintsPage {
       this.raiseComplaint=formBuilder.group({        
         'causeType':['',Validators.required],
         'ngo':['',Validators.required],
-        'compDetails':['',Validators.required]
+        'compDetails':['',Validators.compose([Validators.required,Validators.maxLength(500)])]
        });
        
       
@@ -105,11 +105,11 @@ export class ComplaintsPage {
   
   complaintForm(raiseComplaint) {
        
-       
+       if(this.raiseComplaint.valid){
        this.complaintDetails.description=raiseComplaint.compDetails;
        this.complaintProvider.raiseComplaint(this.complaintDetails).then(res=>{return res;}
       ).catch();
-      
+    }
      // this.subData = formData.value;
     // }
   }
