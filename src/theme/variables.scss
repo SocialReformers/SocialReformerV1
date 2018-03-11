@@ -100,6 +100,15 @@ $colors: (
   padding-top: 0 !important;
 }
 
+.ion-input {
+  color: #292b2c;
+  background-color: #f0eeee;
+  border-color: rgba(123, 130, 136, 0.15); 
+  text-align: center;
+  font-size: 18px;
+  max-block-size: 40px;
+  width: auto;
+  }
 
 ion-navbar {
   opacity: 0.4;
@@ -155,3 +164,5 @@ $series-c: #5cb85c;
 $series-d: #f0ad4e;
 $series-e: #e67d4a;
 $series-f: #d9534f;
+
+

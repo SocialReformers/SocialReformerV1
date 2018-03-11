@@ -30,6 +30,9 @@ import { ConnectionProvider } from '../providers/connection/connection';
 import { RegisterProvider } from '../providers/register/register';
 import { SignInProvider } from '../providers/sign-in/sign-in';
 import { IonicStorageModule } from '@ionic/storage';
+import { EventDetailsPage } from '../pages/event-details/event-details';
+import { JoinEventPage } from '../pages/join-event/join-event';
+import{ThankyouJoinPage} from '../pages/thankyou-join/thankyou-join'
 // import { SignInProvider } from '../providers/sign-in/sign-in';
 
 @NgModule({
@@ -40,7 +43,7 @@ import { IonicStorageModule } from '@ionic/storage';
     SignInPage,
     RegisterPage,
     ComplaintsPage,
-    EventRoutPage,
+    EventRoutPage,EventDetailsPage,JoinEventPage,ThankyouJoinPage,
     ListPage,AutoCompleteComponent,SignOutPage,MyAccountPage
   ],
   imports: [
@@ -56,8 +59,8 @@ import { IonicStorageModule } from '@ionic/storage';
     HomePage,
     CreateEventPage,
     SignInPage,
-    RegisterPage,
-    ComplaintsPage,EventRoutPage,
+    RegisterPage,JoinEventPage,ThankyouJoinPage,
+    ComplaintsPage,EventRoutPage,EventDetailsPage,
     ListPage,AutoCompleteComponent,
     SignOutPage,MyAccountPage
   ],

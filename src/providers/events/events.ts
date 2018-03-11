@@ -29,6 +29,7 @@ export class EventsProvider {
     })
    })
  }
+
  getEventDetails(eventId){
   return new Promise((resolve,reject)=>{
     console.log(this.connectionProvider.getUrl());
@@ -55,7 +56,21 @@ export class EventsProvider {
          });
      });
    } 
-
+  
+   joinEvent(data){
+    return new Promise((resolve, reject) => {
+      console.log(this.connectionProvider.getUrl()+ JSON.stringify(data));
+  
+         this.http.post(this.connectionProvider.getUrl()
+       +'/socialReformer/events/join/userevent', JSON.stringify(data),this.connectionProvider.addHeader())
+           .subscribe(res => {
+            alert("sucess");
+             resolve(res);
+           }, (err) => {
+             reject(err);
+           });
+       });
+   }
   }
 
 

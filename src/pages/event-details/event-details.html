@@ -4,15 +4,72 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
 
-  <ion-navbar>
-    <ion-title>eventDetails</ion-title>
-  </ion-navbar>
+    <ion-header>
+        <ion-navbar>
+          <button ion-button menuToggle>
+              <ion-icon name="menu"></ion-icon>
+            </button>
+            
+          <ion-title>Event Details</ion-title>
+        </ion-navbar>
+      
+      </ion-header>
 
-</ion-header>
+
 
 
 <ion-content padding>
-
+        <ion-row color="#f4f4f4">
+            <ion-col width-10>
+              <ion-item bold>Event Name</ion-item>
+            </ion-col>
+            <ion-col width-10>
+              <ion-item>
+                {{eventlist.name}}
+              </ion-item>
+            </ion-col>
+            </ion-row>
+            <ion-row>
+            <ion-col width-10>
+              <ion-item>Event Description</ion-item>
+            </ion-col>
+            <ion-col width-10>
+              <ion-item>
+                 {{eventlist.description}}
+              </ion-item>
+            </ion-col>
+            </ion-row>
+            <ion-row >
+                <ion-col width-10><ion-item>Event Details</ion-item>
+                </ion-col>
+                <ion-col width-10><ion-item>
+                  {{eventlist.details}}</ion-item>
+                </ion-col>
+                </ion-row>
+                <ion-row>
+                <ion-col width-10><ion-item>Event Locality</ion-item>
+                </ion-col>
+                <ion-col width-10><ion-item>
+                  {{eventlist.locality}}</ion-item>
+                </ion-col>
+                </ion-row>
+            <ion-row>
+                <ion-col width-10><ion-item>Event City</ion-item>
+                </ion-col>
+            <ion-col width-10><ion-item>
+              {{eventlist.city}}</ion-item>
+            </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col width-10><ion-item>Event Contact No</ion-item>
+                </ion-col> 
+            <ion-col width-10><ion-item>
+              {{eventlist.contactNO}}</ion-item>
+            </ion-col>
+          
+          </ion-row>
+          <ion-item>
+              <button ion-button (click)="join(eventlist.id,eventlist.name)" round nav>Join Event</button>
+            </ion-item>
 </ion-content>

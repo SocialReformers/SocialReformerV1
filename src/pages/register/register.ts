@@ -23,7 +23,7 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
-  @ViewChild('eventVenue') locality:any; 
+  //@ViewChild('eventVenue') locality:any; 
   eventVenue:any;
   registerProvider:RegisterProvider;
   registerForm: FormGroup;
@@ -34,6 +34,13 @@ export class RegisterPage {
   password: AbstractControl;
   confirmPassword: AbstractControl;
   namePerson:AbstractControl;
+  registrationData:any={
+     namePerson:'',
+     phoneNo:'',
+     emailAddr:'',     
+     eventVenue:'',
+     password:'',
+  }
   constructor(public navCtrl: NavController, public navParams: NavParams,public storage:Storage,public geolocation:Geolocation,public autocomplete:AutoCompleteProvider,
     public formBuilder:FormBuilder,register:RegisterProvider) {
     this.autocomplete=autocomplete;
@@ -69,7 +76,7 @@ console.log("Testing"+this.emailAddr.valid);
     return _temp;
   }
    autoCompleteCallback1(data: any): any {
-    this.componentData1 = JSON.stringify(data.data);
+    this.componentData1 = JSON.stringify(data.data.formatted_address);
     //this.componentData1 = JSON.parse(this.componentData1).lat;
     console.log(JSON.parse(this.componentData1));
    
@@ -78,11 +85,17 @@ console.log("Testing"+this.emailAddr.valid);
   
     registrationForm(registerForm){
       // if (this.registerForm.valid) {
-        console.log(this.locality.locationInput);
+        //console.log(this.locality.locationInput);
+        this.registrationData.namePerson=this.registerForm.controls['namePerson'].value;
+        this.registrationData.phoneNo=this.registerForm.controls['phoneNo'].value;
+        this.registrationData.emailAddr=this.registerForm.controls['emailAddr'].value;
+        this.registrationData.eventVenue=this.componentData1;
+        console.log(this.componentData1);
+        this.registrationData.password=this.registerForm.controls['password'].value;
         
-        this.registerProvider.addUser(registerForm).then(
+        this.registerProvider.addUser(this.registrationData).then(
           result=>{
-            this.storage.set('username', registerForm.emailAddr);
+            localStorage.setItem('username', this.registrationData.emailAddr);
             this.navCtrl.push(MyAccountPage);
           }
           ).catch(err=>"Service Error");

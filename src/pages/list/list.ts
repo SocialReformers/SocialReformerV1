@@ -2,6 +2,7 @@ import { Component,Output, EventEmitter, } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {EventsProvider} from '../../providers/events/events'
 import {ConnectionProvider} from '../../providers/connection/connection';
+import { EventDetailsPage } from '../event-details/event-details';
 
 @Component({
   selector: 'page-list',
@@ -14,6 +15,8 @@ export class ListPage {
   // items: Array<{title: string, note: string, icon: string}>;
   @Output()
   eventlist:any;
+  eventDetails:any;
+  
     constructor(public navCtrl: NavController, public navParams: NavParams,public connectionProvider:ConnectionProvider,public eventsProvider:EventsProvider ) {
     // If we navigated to this page, we will have an item available as a nav param
     //this.selectedItem = navParams.get('item');
@@ -34,11 +37,11 @@ export class ListPage {
     // }
     this.eventsProvider.getEventList().
     then((result:any)=>{
-    var object=JSON.stringify(result.json() );
+    var object=JSON.stringify(result.json());
     console.log(object+"Tesing");
-    this.eventlist=JSON.parse(JSON.stringify(result.json())); 
+    this.eventlist=JSON.parse(object); 
     })
-    console.log(this.eventlist);
+   // console.log(this.eventlist.json());
   }
 
   
@@ -48,11 +51,13 @@ export class ListPage {
  getEventDetails(eventId){
     this.eventsProvider.getEventDetails(eventId).
     then((result:any)=>{
-    var object=JSON.stringify(result.json() );
+    var object=result.json();
     console.log(object+"Tesing");
-    this.eventlist=JSON.parse(JSON.stringify(result.json())); 
+    this.eventDetails=JSON.stringify(object); 
+    console.log(this.eventDetails+"THis gmmm");
+    this.navCtrl.push(EventDetailsPage,{result});
     })
-    console.log(this.eventlist);
+    console.log(this.eventDetails);
  }
  
 }

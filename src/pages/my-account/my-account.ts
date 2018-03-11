@@ -6,6 +6,7 @@ import { LocalStorageService } from '../../providers/storage/storage';
 import{EventRoutPage} from '../../pages/event-rout/event-rout';
 import{ListPage} from '../../pages/list/list';
 import { CreateEventPage } from '../create-event/create-event';
+import { ComplaintsPage } from '../complaints/complaints';
 
 /**
 * Generated class for the MyAccountPage page.
@@ -36,6 +37,9 @@ username:String;
   }
   eventList(){
     this.navCtrl.push(EventRoutPage);
+  }
+  complaint(){
+    this.navCtrl.push(ComplaintsPage);
   }
 
 

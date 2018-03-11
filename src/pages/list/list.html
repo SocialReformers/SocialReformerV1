@@ -26,8 +26,9 @@
             </ion-col>
           </ion-row>
     </ion-item>
-    <ion-item *ngFor="let item of eventlist" color="#f4f4f4"  >
-      <ion-row  (click)="getEventDetails(item.id)" >
+    <ion-list *ngFor="let item of eventlist" color="#f4f4f4"  >
+      <div (click)="getEventDetails(item.id)">
+      <ion-row>
         <ion-col width-33>
           <p>{{item.name}}</p>
         </ion-col>
@@ -40,7 +41,7 @@
         <ion-col width-33>
           <p>{{item.city}}</p>
         </ion-col>
-      </ion-row>
-    </ion-item>
+      </ion-row></div>
+    </ion-list>
   </ion-list>
 </ion-content>

@@ -19,13 +19,13 @@
 <ion-content padding>
     <form  [formGroup]="registerForm" (ngSubmit)="registrationForm(registerForm.value)" novalidate>
       <div class="formGroup">
-      <ion-item>
+      <ion-item width-20>
           <ion-label >Name Of Person</ion-label>
           <ion-input type="text" class="form-control" formControlName="namePerson" required ></ion-input>
         </ion-item>
         </div>
         <div class="formGroup">
-        <ion-item>
+        <ion-item width-20>
             <ion-label >Email</ion-label>
             <ion-input type="text" class="form-control" formControlName="emailAddr" required></ion-input>
             <div *ngIf="registerForm.get('emailAddr').touched">
@@ -35,27 +35,27 @@
           </ion-item> 
           </div>
           <div class="formGroup">
-        <ion-item>          
+        <ion-item width-20>          
             <ion-label >Phone No</ion-label>
             <ion-input type="text" class="form-control" formControlName="phoneNo" required></ion-input>
           </ion-item>
           </div>
           <div class="formGroup">
-        <ion-item>
+        <ion-item width-20>
           <ion-label>Address</ion-label>
           <!-- <ion-textarea class="form-control" formControlName="eventVenue"></ion-textarea> -->       
         </ion-item>
         <div class="col-xs-12 col-md-6">
           
-          <div class="panel-body">            
-              <auto-complete #eventVenue (componentCallback)="autoCompleteCallback1($event)" required></auto-complete>
+          <div class="panel-body" width-20>            
+              <auto-complete  (componentCallback)="autoCompleteCallback1($event)" required></auto-complete>
               <!-- <ion-input type="text" id="eventVenueAuto" formControlName="eventVenueAuto"></ion-input> -->
           </div>          
           </div>
        
             </div>
             <div class="formGroup">
-        <ion-item>
+        <ion-item width-20>
             <ion-label>Password</ion-label>
             <ion-input class="form-control ng-valid ng-dirty ng-invalid" formControlName="password" type="password"required></ion-input>
              <div class='form-text error' *ngIf="registerForm.controls.password.touched">
@@ -65,9 +65,9 @@
           </ion-item> 
           </div>
           <div class="formGroup">
-        <ion-item>
+        <ion-item width-20>
               <ion-label>Confirm Password</ion-label>
-              <ion-input class="form-control  ng-valid ng-dirty ng-invalid" formControlName="confirmPassword" type="password" required></ion-input>
+              <ion-input class="form-control  ng-valid ng-dirty ng-invalid ion-imput" formControlName="confirmPassword" type="password" required></ion-input>
               <div class='form-text error' *ngIf="registerForm.controls.confirmPassword.touched">{{registerForm.get('confirmPassword').hasError('required')}
                 <div  class="error-message" *ngIf="registerForm.controls.confirmPassword.hasError('')">Password is required.</div>
                 <div  class="error-message" *ngIf="registerForm.controls.confirmPassword.hasError('minlength')">Password isn't long enough.</div>
