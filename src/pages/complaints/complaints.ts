@@ -91,6 +91,7 @@ export class ComplaintsPage {
        this.complaintProvider.raiseComplaint(this.complaintDetails).then(res=>{return res;}
       ).catch();
     }
+    this.nav.push(HomePage);
 
   }
   
