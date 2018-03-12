@@ -18,20 +18,23 @@
 <ion-content padding>
 <div *ngIf="username!=null">
     <ion-item>
-     {{username}}  
+<b>Login User </b> {{username}}  
       </ion-item>
 <ion-item>
   <button ion-button (click)="signOut()" round nav>Sign Out</button>
 </ion-item>
-
+<ion-row col-12 col-sm>
 <ion-item>
 <br/>
-<button ion-button (click)="createEvent()"  class = "padding" >Create Event</button>
+<a (click)="createEvent()"  class = "padding" round>Create Event</a>
 </ion-item>
 <ion-item>
-  <button ion-button (click)="eventList()"  class = "padding" round nav>Events List</button>
+  <a  (click)="eventList()"  class = "padding" round nav>Events List</a                             >
   </ion-item>
+</ion-row>
+
 </div>
+<div *ngIf="username==null">
 <ion-item>
     You are not A registered User. <br/>
     Please register and go to createEvent.
@@ -39,5 +42,6 @@
   <ion-item>
       <button ion-button (click)="register()"  class = "padding"round nav>Register</button>
   </ion-item>
+</div>
 </ion-content>
 

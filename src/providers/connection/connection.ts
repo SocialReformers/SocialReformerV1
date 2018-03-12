@@ -15,8 +15,9 @@ import { Header } from 'ionic-angular/components/toolbar/toolbar-header';
 export class ConnectionProvider {
 
   
- public eventUrl='https://social-ref-api-v1.herokuapp.com/';
-  
+ //public eventUrl='https://social-ref-api-v1.herokuapp.com/';
+ public eventUrl='http://localhost:8080';
+ 
     constructor(public http: Http) {
     
     }

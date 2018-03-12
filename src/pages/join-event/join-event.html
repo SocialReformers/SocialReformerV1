@@ -20,23 +20,22 @@
     </ion-title>
     <form [formGroup]="form" (ngSubmit)="joinEventForm(form.value)">
        
-        <ion-item>
-            <ion-label >Event Title</ion-label>         
-        </ion-item>
-        <ion-item>
-             <p>{{eventTitle}}</p> </ion-item>  
-        <ion-item>
+        <ion-item col-9 col-sm>
+            <ion-label >Event Title</ion-label>  
+            <ion-label>{{eventTitle}}</ion-label>       
+        </ion-item>    
+        <ion-item col-9 col-sm>
             <ion-label>Event Details</ion-label>
             <ion-textarea formControlName="userName"></ion-textarea>
           </ion-item>
-        <ion-item>
+        <ion-item col-9 col-sm>
               <ion-label>Email Address</ion-label>
               <ion-input formControlName="email"></ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item col-9 col-sm>
               <ion-label>Contact No</ion-label>
               <ion-input formControlName="phone"></ion-input>
         </ion-item>
-        <button ion-button type="submit" block>Join Event</button>
+        <button ion-button type="submit"  round icon-end center>Join Event</button>
       </form>    
 </ion-content>

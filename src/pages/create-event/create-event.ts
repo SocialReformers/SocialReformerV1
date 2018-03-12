@@ -6,6 +6,7 @@ import { AutoCompleteProvider } from '../../providers/auto-complete/auto-complet
 import {ListPage} from '../list/list';
 import {EventRoutPage} from '../../pages/event-rout/event-rout';
 import { RegisterPage } from '../register/register';
+import {HomePage} from '../../pages/home/home'
 /**
  * Generated class for the CreateEventPage page.
  *
@@ -28,7 +29,7 @@ export class CreateEventPage {
   }
 
   ionViewDidLoad() {
-    //this.username=localStorage.getItem("username");
+    this.username=localStorage.getItem("username");
   }
   eventList(){
     this.nav.push(ListPage);
@@ -38,5 +39,9 @@ export class CreateEventPage {
   }
   createEvent(){
   this.nav.push(EventRoutPage);
+}
+signOut(){
+  localStorage.clear();
+  this.nav.push(HomePage);
 }
 } 
